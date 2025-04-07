@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "miniapp",
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'netflix.urls'
@@ -133,3 +138,21 @@ MEDFIA_ROOT = os.path.join(BASE_DIR, "media")
 
 #LOGIN_REDIRECT_URL = ""
 #LOGIN_URL = "login"
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+# Allauth Configuration
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # Login with email instead of username
+ACCOUNT_EMAIL_REQUIRED = False  # Should be True if using email authentication
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # More secure: 'mandatory', 'optional', or 'none'
+ACCOUNT_USERNAME_REQUIRED = False  # Fixed typo (was AACOUNT_USERNAME_REQUIRED)
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "miniapp:home"
