@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +18,26 @@
 
         <div>
             {% if request.user.is_authenticated %}
-                <a href="{% url 'account_logout' %}" class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">
-                    Log Out
-                </a>
+            <a href="{% url 'account_logout' %}" class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
+                Logout
+            </a>
             {% else %}
-                <a href="{% url 'account_login' %}" class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">
-                    Sign In
-                </a>
+            <a href="{% url 'account_login' %}" class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
+                Sign In 
+            </a>
             {% endif %}
         </div>
     </nav>
-    
     {% block content %}
-    {% endblock %}
 
-    <footer class="px-5 py-10">
+    {% endblock content %}
+    <!-- <footer class=" px-5 py-10 ">
         <ul class="flex justify-between items-center">
-            <li>&copy; All Right Reserved | Special KYS technology</li>
-            <li>Turtle TV</li>
-            <li>By: The Great Turtle</li>
+            
+            <li>&copy; All Right Reserved | 2022</li>
+            <li> Netflix Clone</li>
+            <li>By: Destiny Franks - Desphixs</li>
         </ul>
-    </footer>
+    </footer> -->
 </body>
 </html>
